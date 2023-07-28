@@ -1,41 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <style>
-    nav {
-      border-collapse: collapse;
-      border: 1px solid black;
-    }
-  </style>
+  <style></style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <header>
-    <picture>
-      <source media="(max-width:40px)" srcset="logo.jpg">
-      <img src="old_logo.jpg" alt="">
-    </picture>
-    <h1>Welcome to My Portfolio</h1>
+    <div id="logo-container">
+      <picture>
+        <!-- Source: https://pngtree.com/freepng/alphabet-letter-b-with-ornaments-vintage_5361175.html?sol=downref&id=bef -->
+        <source class="logo" media="(max-width:6%)" srcset="logo.png">
+        <img class="logo" src="logo.png" alt="This image cannot be displayed">
+      </picture>
+      <h1 id="welcome">Welcome to My Portfolio Website!</h1>
+    </div>
     <nav>
       <table>
         <tr>
-          <td><a href="index.html">Home</a></td>
+          <td><a href="index.html" class="link">Home</a></td>
           <td><div>|</div></td>
-          <td><a href="index.html#about">About</a></td>
+          <td><a href="index.html#about" class="link">About</a></td>
           <td><div>|</div></td>
-          <td><a href="index.html#projects">Projects</a></td>
+          <td><a href="index.html#projects" class="link">Projects</a></td>
           <td><div>|</div></td>
-          <td><a href="index.html#contact">Contact</a></td>
+          <td><a href="index.html#contact" class="link">Contact</a></td>
         </tr>
       </table>
     </nav>
   </header>
   
   <main>
-    <section id="big_idea">
+    <section class="body-section">
       <h2>The Big Idea</h2>
       <p>This is a project about aggregating data</p>
       <p>
@@ -58,7 +56,7 @@
       </code></pre>
     </section>
     <hr>
-    <section id="the_data">
+    <section class="body-section">
       <h2>The Data</h2>
       <table>
         <caption>Year</caption>
@@ -144,29 +142,30 @@
       </svg>
     </section>
     <hr>
-    <section id="key_takeaways">
+    <section class="body-section">
       <h2>Key Takeways</h2>
       <ol>
         <li>Takeaway 1</li>
         <li>Takeaway 2</li>
         <li>Takeaway 3</li>
       </ol>
+      <form>
+        <fieldset>
+         <legend>Apply now to the website:</legend>
+         <label for="fname">First name:</label>
+         <input type="text" id="fname" name="fname"><br><br>
+         <label for="lname">Last name:</label>
+         <input type="text" id="lname" name="lname"><br><br>
+         <label for="email">Email:</label>
+         <input type="email" id="email" name="email"><br><br>
+         <label for="birthday">Birthday:</label>
+         <input type="date" id="birthday" name="birthday"><br><br>
+         <input type="submit" value="Submit">
+        </fieldset>
+      </form>
     </section>
 
-    <form>
-      <fieldset>
-       <legend>Apply now to the website:</legend>
-       <label for="fname">First name:</label>
-       <input type="text" id="fname" name="fname"><br><br>
-       <label for="lname">Last name:</label>
-       <input type="text" id="lname" name="lname"><br><br>
-       <label for="email">Email:</label>
-       <input type="email" id="email" name="email"><br><br>
-       <label for="birthday">Birthday:</label>
-       <input type="date" id="birthday" name="birthday"><br><br>
-       <input type="submit" value="Submit">
-      </fieldset>
-    </form>
+    
   </main>
   
   <footer>
