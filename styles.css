@@ -1,5 +1,5 @@
 :root {
-  --white: #ffffff;
+  --white: color(display-p3 1 1 1);
   --gray: #333333;
   --green: #548547;
   font-family: Consolas, Arial, Helvetica;
@@ -16,16 +16,16 @@ body {
 header {
   margin-top: -1.3%;
   overflow: hidden;
-  background-color: var(--gray);
+  background-color: var(--gray, #333333);
   padding: 1%;
-  color: var(--white);
+  color: var(--white, #ffffff);
 }
 
 footer {
   overflow: hidden;
-  background-color: var(--gray);
+  background-color: var(--gray, #333333);
   padding: 1%;
-  color: var(--white);
+  color: var(--white, #ffffff);
 }
 
 .body-section {
@@ -38,7 +38,7 @@ footer {
 }
 
 .link, .link:visited {
-  color: var(--white);
+  color: var(--white, #ffffff);
   text-decoration: none;
 }
 
@@ -66,5 +66,12 @@ footer {
 }
 
 #welcome:hover {
-  color: var(--green);
+  color: var(--green, #548547);
+}
+
+section:has(ul) {
+  font-style: oblique;
+  & h2 {
+    font-style: normal;
+  }
 }
