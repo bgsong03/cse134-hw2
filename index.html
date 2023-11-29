@@ -136,8 +136,13 @@
     const body = document.querySelector('body > main');
     const form = document.getElementById('contact-me-form');
     const name = document.getElementById('name');
+    const name_error = document.getElementById('name-error');
     const email = document.getElementById('email');
     const message = document.getElementById('message');
+    const message_info = document.getElementById('message-info');
+    const submit = document.getElementById('contact-me-submit');
+    var form_errors = [];
+    var regex = /^[a-zA-Z0-9 ]+$/;
     toggle.addEventListener('change', function() {
       if (this.checked) {
         body.classList.add('dark-mode');
@@ -146,28 +151,83 @@
       }
     });
 
-    form.addEventListener('load', function(event) {
+    name.addEventListener('input', function(event) {
       event.preventDefault();
-      if(!(name.checkValidity())){
+      if(name.value.length < 1 || name.validity.valueMissing){
         name.setCustomValidity("Please enter a valid name!");
-        name.reportValidity();
+      }
+      else if(!(regex.test(name.value))){
+        name.setCustomValidity("Invalid character/s, no punctuations or special characters allowed");
+        name_error.textContent = "Invalid char/s"
+        setTimeout(function() {name_error.textContent = ""}, 3000);
       }
       else {
         name.setCustomValidity("");
       }
-      if(!(email.checkValidity())){
+    });
+
+    email.addEventListener('input', function(event) {
+      event.preventDefault();
+      if(email.validity.typeMismatch || email.validity.valueMissing){
         email.setCustomValidity("Please enter a valid email!");
-        email.reportValidity();
       }
       else {
         email.setCustomValidity("");
       }
-      if(!(message.checkValidity())){
-        message.setCustomValidity("Please enter a valid message!");
-        message.reportValidity();
+    });
+
+    message.addEventListener('input', function(event) {
+      event.preventDefault();
+      if(message.value.length < 10 || message.validity.valueMissing){
+        message.setCustomValidity("Please enter a message with 10 or more characters!");
       }
       else {
         message.setCustomValidity("");
+      }
+    });
+
+    submit.addEventListener('click', async function(event) {
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        if (!name.reportValidity()) {
+          let error = {"error": name.validationMessage};
+          form_errors.push(error);
+        }
+        if (!email.reportValidity()) {
+          let error = {"error": email.validationMessage};
+          form_errors.push(error);
+        }
+        if (!message.reportValidity()) {
+          let error = {"error": message.validationMessage};
+          form_errors.push(error);
+        }
+        try {
+          const response = await fetch(form.action, {
+            method: "post",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(form_errors),
+          });
+          const result = await response.json();
+          console.log(result);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+    });
+
+    message.addEventListener('input', function() {
+      const characters = 200 - message.value.length;
+      message_info.textContent = characters.toString() + " characters left";
+      if (characters <= 100 && characters > 30) {
+        message_info.style.color = 'orange';
+      }
+      else if (characters <= 30) {
+        message_info.style.color = 'red';
+      }
+      else {
+        message_info.style.color = 'green';
       }
     });
   </script>
