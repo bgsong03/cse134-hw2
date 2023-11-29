@@ -29,6 +29,13 @@
           <td><a href="index.html#contact" class="link">Contact</a></td>
         </tr>
       </table>
+      <div id="website-theme" class="hidden">
+        Light/Dark Theme
+        <label class="switch">
+          <input type="checkbox" id="modeToggle">
+          <span class="slider round"></span>
+        </label>
+      </div>
     </nav>
   </header>
   
@@ -178,6 +185,20 @@
     ctx.beginPath();
     ctx.arc(95, 50, 40, 0, 2 * Math.PI);
     ctx.stroke();
+
+    document.getElementById('website-theme').classList.remove('hidden');
+    const toggle = document.getElementById('modeToggle');
+    window.onload = function() {
+      toggle.checked = false;
+    };
+    const body = document.querySelector('body > main');
+    toggle.addEventListener('change', function() {
+      if (this.checked) {
+        body.classList.add('dark-mode');
+      } else {
+        body.classList.remove('dark-mode');
+      }
+    });
   </script>
 </body>
 </html>

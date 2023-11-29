@@ -31,13 +31,6 @@
           <td><a href="#contact" class="link">Contact</a></td>
         </tr>
       </table>
-      <div id="website-theme" class="hidden">
-        Light/Dark Theme
-        <label class="switch">
-          <input type="checkbox" id="modeToggle">
-          <span class="slider round"></span>
-        </label>
-      </div>
     </nav>
   </header>
   
@@ -52,7 +45,7 @@
       </details>
       <aside>
         <video width="320" height="240" controls>
-          <source src="" type="video/mp4">
+          <source src="video.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video> 
       </aside>
@@ -87,24 +80,24 @@
           <label for="name">Name: <p class="required-indicator"></p></label>
           <input type="text" id="name" name="name" required>
           <div class="form-output">
-            <output for="name" class="error" id="name-error"></output>
-            <output for="name" class="info" id="name_info"></output>
+            <output for="name" class="error"></output>
+            <output for="name" class="info"></output>
           </div>
         </div>
         <div class="form-group">
           <label for="email">Email: <p class="required-indicator"></p></label>
           <input type="email" id="email" name="email" required>
           <div class="form-output">
-            <output for="email" class="error" id="email-error"></output>
-            <output for="email" class="info" id="email-info"></output>
+            <output for="name" class="error"></output>
+            <output for="name" class="info"></output>
           </div>
         </div>
         <div class="form-group">
           <label for="message">Message: <p class="required-indicator"></p></label>
-          <textarea id="message" name="message" minlength="10" maxlength="200" required></textarea>
+          <textarea id="message" name="message" minlength="10" maxlength="300" required></textarea>
           <div class="form-output">
-            <output for="message" class="error" id="message-error"></output>
-            <output for="message" class="info" id="message-info"></output>
+            <output for="name" class="error"></output>
+            <output for="name" class="info"></output>
           </div>
         </div>
         <input type="hidden" id="possible_bot" name="possible_bot" value="true">
@@ -127,50 +120,7 @@
     <p><i>&copy; 2023 My Portfolio. All rights reserved.</i></p>
   </footer>
   
-  <script>
-    document.getElementById('website-theme').classList.remove('hidden');
-    const toggle = document.getElementById('modeToggle');
-    window.onload = function() {
-      toggle.checked = false;
-    };
-    const body = document.querySelector('body > main');
-    const form = document.getElementById('contact-me-form');
-    const name = document.getElementById('name');
-    const email = document.getElementById('email');
-    const message = document.getElementById('message');
-    toggle.addEventListener('change', function() {
-      if (this.checked) {
-        body.classList.add('dark-mode');
-      } else {
-        body.classList.remove('dark-mode');
-      }
-    });
-
-    form.addEventListener('load', function(event) {
-      event.preventDefault();
-      if(!(name.checkValidity())){
-        name.setCustomValidity("Please enter a valid name!");
-        name.reportValidity();
-      }
-      else {
-        name.setCustomValidity("");
-      }
-      if(!(email.checkValidity())){
-        email.setCustomValidity("Please enter a valid email!");
-        email.reportValidity();
-      }
-      else {
-        email.setCustomValidity("");
-      }
-      if(!(message.checkValidity())){
-        message.setCustomValidity("Please enter a valid message!");
-        message.reportValidity();
-      }
-      else {
-        message.setCustomValidity("");
-      }
-    });
-  </script>
+  <script></script>
   
 </body>
 </html>

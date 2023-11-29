@@ -39,7 +39,6 @@ footer {
 
 .link, .link:visited {
   color: var(--white, #ffffff);
-  text-decoration: none;
 }
 
 @keyframes spin {
@@ -74,4 +73,113 @@ section:has(ul) {
   & h2 {
     font-style: normal;
   }
+}
+
+#contact-me-form {
+  display: grid;
+  width: 60%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 4fr 1fr;
+
+  #contact-me-submit {
+    width: 50%;
+  }
+}
+
+.error {
+  color: red;
+}
+
+.info {
+  color: green;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#website-theme{
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  align-content: center;
+}
+
+.switch {
+  position: relative;
+  width: 2.8em;
+  height: 1.5em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 70%;
+  width: 40%;
+  left: 10%;
+  bottom: 14.5%;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 1em;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.dark-mode {
+  background-color: var(--gray, #333333);
+  color: var(--white, #ffffff);
+  border-top: 1px groove;
+  border-bottom: 1px groove;
+  border-color: var(--white, #ffffff);
+
+  a:visited {
+    color: var(--white, #ffffff);
+    text-decoration: none;
+  }
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
